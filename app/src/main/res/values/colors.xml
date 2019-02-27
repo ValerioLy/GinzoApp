@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     // background splashscreen
     <color name="colorSplashBackground">#000000</color>
+    <color name="colorGrey">#383838</color>
+    <color name="colorYellow">#f6d54b</color>
 </resources>
