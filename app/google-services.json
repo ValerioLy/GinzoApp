@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "781366181052",
+    "firebase_url": "https://ginzo-42d8e.firebaseio.com",
+    "project_id": "ginzo-42d8e",
+    "storage_bucket": "ginzo-42d8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781366181052:android:146a67769f109518",
+        "android_client_info": {
+          "package_name": "com.stockato.ginzo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781366181052-cm11q5o7jijbg87f7acnqhaepbel014s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv4EZIlNkRxT5EubJtLurlQrvnYml-bJo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -88,7 +88,7 @@
         tools:layout_editor_absoluteY="411dp" />
 
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/ordinaImg"
         android:layout_width="130dp"
         android:layout_height="115dp"
         android:layout_marginTop="8dp"
@@ -152,7 +152,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/prenotaImg"
         android:layout_width="121dp"
         android:layout_height="112dp"
         android:layout_marginStart="8dp"
@@ -182,7 +182,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <ImageButton
-        android:id="@+id/imageButton10"
+        android:id="@+id/profileImg"
         android:layout_width="132dp"
         android:layout_height="138dp"
         android:layout_marginStart="8dp"
