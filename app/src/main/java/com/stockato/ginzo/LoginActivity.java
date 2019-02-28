@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText emailLogin, pswLogin;
-    Button loginButton;
+    Button loginButton, register;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +27,16 @@ public class LoginActivity extends AppCompatActivity {
         emailLogin = findViewById(R.id.emailLogin);
         pswLogin = findViewById(R.id.pswLogin);
         loginButton = findViewById(R.id.loginButton);
-
+        register = findViewById(R.id.register);
         mAuth = FirebaseAuth.getInstance();
 
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         if (emailLogin.getText().toString() != "" && pswLogin.getText().toString() != "")
         {
