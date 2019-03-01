@@ -30,16 +30,29 @@ Button logoutBtn;
       email = findViewById(R.id.email);
 
       mDatabase = FirebaseDatabase.getInstance().getReference();
-        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
-        final FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+      FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
       logoutBtn = findViewById(R.id.logoutBtn);
+
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String email = user.getEmail();
+            String uid = user.getUid();
+        }
+
+
+
+
+
+
+
+
 
       logoutBtn.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
 
               FirebaseAuth.getInstance().signOut();
-              if (mFirebaseUser != null){
+              if (user != null){
                   Intent intent = new Intent(profileActivity.this, RegisterActivity.class);
                   startActivity(intent);
               }

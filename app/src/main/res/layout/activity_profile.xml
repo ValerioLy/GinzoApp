@@ -51,10 +51,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
 
     <TextView
         android:id="@+id/ordini"
