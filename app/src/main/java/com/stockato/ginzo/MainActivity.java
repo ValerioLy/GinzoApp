@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton ordinaImg, prenotaImg, profileImg;
+    ImageButton ordinaImg, prenotaImg;
+    View viewProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         ordinaImg = findViewById(R.id.ordinaImg);
         prenotaImg = findViewById(R.id.ordinaImg);
-        profileImg = findViewById(R.id.profileImg);
+        viewProfile = findViewById(R.id.viewProfile);
 
 
         ordinaImg.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        profileImg.setOnClickListener(new View.OnClickListener() {
+        viewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, profileActivity.class);
