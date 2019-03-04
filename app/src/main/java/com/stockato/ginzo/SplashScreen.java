@@ -5,8 +5,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 
 public class SplashScreen extends AppCompatActivity {
     int timeout = 2000;
@@ -16,9 +18,8 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splashscreen);
 
         getSupportActionBar().hide();
-
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseApp.initializeApp(this);
+   FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             new Handler().postDelayed(new Runnable()
             {
