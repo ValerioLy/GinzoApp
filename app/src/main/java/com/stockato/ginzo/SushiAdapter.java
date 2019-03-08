@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -65,7 +66,9 @@ public class SushiAdapter extends BaseAdapter {
         switch (getItemViewType(i)) {
             case ITEM:
                 TextView item = view.findViewById(R.id.sushi);
+                ImageView arrow = view.findViewById(R.id.arrow);
                 item.setText(((Sushi)list.get(i)).getName());
+               arrow.setImageResource(R.drawable.baseline_play_arrow_black_18dp);
                 break;
             case HEADER:
                 TextView title = view.findViewById(R.id.titolo);
