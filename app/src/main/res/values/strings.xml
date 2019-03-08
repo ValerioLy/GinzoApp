@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ginzo</string>
+    <string name="descPrenota">Seleziona data e ora in cui vuoi prenotare il tuo tavolo.  Le richieste vanno inviate almeno 1ora prima.</string>
 </resources>
