@@ -50,7 +50,7 @@ public class OrdinaActivity extends AppCompatActivity {
         list.add(new Sushi("BARCHE MIX", R.drawable.baseline_play_arrow_black_18dp));
         list.add(new String("PARTY TRAYS"));
         list.add(new Sushi("PARTY TRAYS", R.drawable.baseline_play_arrow_black_18dp));
-        list.add(new String("DESSERRTS"));
+        list.add(new String("DESSERTS"));
         list.add(new Sushi("DESSERTS", R.drawable.baseline_play_arrow_black_18dp));
         list.add(new String("DRINKS"));
         list.add(new Sushi("Japanese Beers", R.drawable.baseline_play_arrow_black_18dp));
