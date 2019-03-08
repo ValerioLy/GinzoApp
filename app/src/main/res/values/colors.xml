@@ -6,5 +6,6 @@
     // background splashscreen
     <color name="colorSplashBackground">#000000</color>
     <color name="colorGrey">#383838</color>
-    <color name="colorYellow">#f6d54b</color>
+    <color name="colorYellow">#F6D54B</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

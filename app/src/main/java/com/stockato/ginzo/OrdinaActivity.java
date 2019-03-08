@@ -31,6 +31,34 @@ public class OrdinaActivity extends AppCompatActivity {
         list.add(new Sushi("Futomaki"));
         list.add(new Sushi("Hosomaki"));
         list.add(new Sushi("Temaki"));
+        list.add(new String("MIXED"));
+        list.add(new Sushi("Nigiri mixed"));
+        list.add(new Sushi("Sushi mixed"));
+        list.add(new Sushi("Maki mixed"));
+        list.add(new Sushi("Veggy"));
+        list.add(new Sushi("Lunch menu"));
+        list.add(new String("Sashimi"));
+        list.add(new Sushi("Sashimi"));
+        list.add(new Sushi("Sashimi a la carte"));
+        list.add(new String("TARTARE-CEVICHE-CHIRASHI"));
+        list.add(new Sushi("Tartare-Ceviche-Chirashi"));
+        list.add(new String("SALADS"));
+        list.add(new Sushi("Salads"));
+        list.add(new String("HOT DISHES"));
+        list.add(new Sushi("HOT DISHES"));
+        list.add(new String("BARCHE MIX"));
+        list.add(new Sushi("BARCHE MIX"));
+        list.add(new String("PARTY TRAYS"));
+        list.add(new Sushi("PARTY TRAYS"));
+        list.add(new String("DESSERRTS"));
+        list.add(new Sushi("DESSERTS"));
+        list.add(new String("DRINKS"));
+        list.add(new Sushi("Japanese Beers"));
+        list.add(new Sushi("Wines"));
+        list.add(new Sushi("Soft drinks"));
+        list.add(new Sushi("Sakè"));
+        list.add(new String("SALSE E CONDIMENTI"));
+        list.add(new Sushi("Salse e condimenti"));
 
         SushiAdapter sushiAdapter = new SushiAdapter(OrdinaActivity.this, list);
 

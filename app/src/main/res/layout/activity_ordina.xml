@@ -7,8 +7,19 @@
     android:orientation="vertical"
     tools:context=".OrdinaActivity">
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="@color/colorWhite"
+        android:text="ORDINA ONLINE"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <ListView
         android:id="@+id/listView"
+        android:background="@color/colorSplashBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
