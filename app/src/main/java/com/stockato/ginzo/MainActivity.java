@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
         ordinaImg = findViewById(R.id.ordinaImg);
-        prenotaImg = findViewById(R.id.ordinaImg);
+        prenotaImg = findViewById(R.id.prenotaImg);
         viewProfile = findViewById(R.id.viewProfile);
 
 
