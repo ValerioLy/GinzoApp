@@ -1,6 +1,7 @@
 package com.stockato.ginzo;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,15 +35,16 @@ public class OreTavolo extends AppCompatActivity {
         ore.add(new Ora("22:00"));
 
 
-
-        OreAdapter oreAdapter = new OreAdapter(this, R.layout.ore, ore );
+        OreAdapter oreAdapter = new OreAdapter(this, R.layout.ore, ore);
         listore.setAdapter(oreAdapter);
 
         listore.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(OreTavolo.this, CompilaPrenotazione.class);
-                startActivity(intent);
+                    Intent intent = new Intent(OreTavolo.this, CompilaPrenotazione.class);
+                    startActivity(intent);
+
+
             }
         });
     }
