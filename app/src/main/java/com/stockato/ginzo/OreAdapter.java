@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class OreAdapter extends ArrayAdapter {
     ArrayList<Object> list;
 
+
     public OreAdapter(Context context, int resource, ArrayList<Object> objects) {
         super(context, resource, objects);
     }

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".OreTavolo">
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="PRENOTAZIONE TAVOLO"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="99dp" />
+
+    <TextView
+        android:id="@+id/txtCompila"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnGiorno"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorYellow"
+        android:clickable="false"
+        android:text="Giorno ore" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nome"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editCognome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Cognome"
+            android:inputType="textPersonName" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Telefono"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editPersone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="N. persone"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Note"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/txtRic"
+        android:layout_width="421dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="text" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="CheckBox"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Premi per leggere l'informativa sulla privacy"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorYellow"
+        android:text="INVIA RICHIESTA"
+        android:textAlignment="center" />
+
+</LinearLayout>

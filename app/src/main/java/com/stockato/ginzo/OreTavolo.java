@@ -1,7 +1,10 @@
 package com.stockato.ginzo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -34,5 +37,13 @@ public class OreTavolo extends AppCompatActivity {
 
         OreAdapter oreAdapter = new OreAdapter(this, R.layout.ore, ore );
         listore.setAdapter(oreAdapter);
+
+        listore.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(OreTavolo.this, CompilaPrenotazione.class);
+                startActivity(intent);
+            }
+        });
     }
 }
