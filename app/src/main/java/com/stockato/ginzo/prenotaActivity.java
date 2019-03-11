@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -27,8 +28,8 @@ public class prenotaActivity extends AppCompatActivity {
     CalendarView calendarView;
     DatabaseReference reference;
     DataP dataP;
-    long id;
     String dataCurrent;
+    String key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,19 +50,6 @@ public class prenotaActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         final String selectedDate = sdf.format(new Date(calendarView.getDate()));
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    id = dataSnapshot.getChildrenCount();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
 
@@ -76,10 +64,16 @@ public class prenotaActivity extends AppCompatActivity {
         prosegui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                key =reference.push().getKey();
                 Intent intent = new Intent(prenotaActivity.this, OreTavolo.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", key);
+                bundle.putString("data", dataCurrent);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 dataP.setGiorno(dataCurrent);
-                reference.child(String.valueOf(id+1)).setValue(dataP);
+                reference.child(key).setValue(dataP);
+                Log.i("diocristo", "prenotaActivity"+key);
                 Toast.makeText(prenotaActivity.this, "Data aggiornato nel DB", Toast.LENGTH_SHORT).show();
             }
         });

@@ -25,7 +25,7 @@ public class OreAdapter extends ArrayAdapter {
         TextView txtOra = (TextView)convertView.findViewById(R.id.txtOra);
 
         Ora ora = (Ora) getItem(position);
-        txtOra.setText(ora.getOra());
+        txtOra.setText(String.valueOf(ora.getOra()));
 
         return convertView;
     }
