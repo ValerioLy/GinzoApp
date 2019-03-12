@@ -1,7 +1,10 @@
 package com.stockato.ginzo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -63,6 +66,15 @@ public class OrdinaActivity extends AppCompatActivity {
         SushiAdapter sushiAdapter = new SushiAdapter(OrdinaActivity.this, list);
 
         listView.setAdapter(sushiAdapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(OrdinaActivity.this, OrdersActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 
