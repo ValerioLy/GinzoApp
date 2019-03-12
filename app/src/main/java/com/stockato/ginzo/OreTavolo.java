@@ -78,6 +78,7 @@ public class OreTavolo extends AppCompatActivity {
                 Log.i("diobono", "OreTavolo"+txtOra);
                 dataP = new DataP();
                 dataP.setOra(txtOra);
+                dataP.setGiorno(dataPassato);
                 reference.child(idPassato).setValue(dataP);
                 Toast.makeText(OreTavolo.this, "Ora:"+txtOra, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(OreTavolo.this, CompilaPrenotazione.class);
@@ -85,6 +86,7 @@ public class OreTavolo extends AppCompatActivity {
                     bundle.putString("id", idPassato);
                     bundle.putString("data", dataPassato);
                     bundle.putString("ora", txtOra);
+                Log.i("diocristo", "OreTavolo"+idPassato);
                     intent.putExtras(bundle);
                     startActivity(intent);
             }
