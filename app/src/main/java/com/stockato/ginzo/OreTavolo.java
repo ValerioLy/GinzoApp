@@ -86,7 +86,7 @@ public class OreTavolo extends AppCompatActivity {
                     bundle.putString("id", idPassato);
                     bundle.putString("data", dataPassato);
                     bundle.putString("ora", txtOra);
-                Log.i("diocristo", "OreTavolo"+idPassato);
+                Log.i("idpassato", "OreTavolo"+idPassato);
                     intent.putExtras(bundle);
                     startActivity(intent);
             }

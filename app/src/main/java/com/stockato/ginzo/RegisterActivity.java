@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     User user;
     DatabaseReference reference;
-    long id;
+    String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,24 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         user = new User();
         reference = FirebaseDatabase.getInstance().getReference().child("User");
-
-
-       reference.addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-              if(dataSnapshot.exists()){
-            id = dataSnapshot.getChildrenCount();
-              }
-           }
-
-           @Override
-           public void onCancelled(@NonNull DatabaseError databaseError) {
-
-           }
-       });
-
-
-
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,9 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                     startActivity(intent);
-
+                                    key =reference.push().getKey();
                                     user.setEmail(emailTxt.getText().toString().trim());
-                                    reference.child(String.valueOf(id+1)).setValue(user);
+                                    reference.child(key).setValue(user);
                                     Toast.makeText(RegisterActivity.this, "Utente aggiornato nel DB", Toast.LENGTH_SHORT).show();
 
 

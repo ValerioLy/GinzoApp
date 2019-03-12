@@ -73,7 +73,7 @@ public class prenotaActivity extends AppCompatActivity {
                 startActivity(intent);
                 dataP.setGiorno(dataCurrent);
                 reference.child(key).setValue(dataP);
-                Log.i("diocristo", "prenotaActivity"+key);
+                Log.i("idpassato", "prenotaActivity"+key);
                 Toast.makeText(prenotaActivity.this, "Data aggiornato nel DB", Toast.LENGTH_SHORT).show();
             }
         });

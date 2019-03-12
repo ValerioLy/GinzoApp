@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class profileActivity extends AppCompatActivity {
-    TextView email;
-    Button logoutBtn;
+    EditText nome, cognome, via, numero, cap, citta, provincia, campanello, codice, telefono, email, account, pwsnuova, psw;
+    TextView privacy;
+    Button logoutBtn, conferma;
+    CheckBox check;
     private DatabaseReference mDatabase;
 
     @Override
@@ -31,15 +35,29 @@ public class profileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         getSupportActionBar().hide();
-
-
+        privacy = findViewById(R.id.privacy);
+        nome = findViewById(R.id.nome);
+        cognome = findViewById(R.id.cognome);
+        via = findViewById(R.id.via);
+        numero = findViewById(R.id.numero);
+        cap = findViewById(R.id.cap);
+        citta = findViewById(R.id.citta);
+        provincia = findViewById(R.id.provincia);
+        campanello = findViewById(R.id.campanello);
+        codice = findViewById(R.id.codice);
+        telefono = findViewById(R.id.telefono);
         email = findViewById(R.id.email);
+        account = findViewById(R.id.account);
+        pwsnuova = findViewById(R.id.pwsnuova);
+        psw = findViewById(R.id.psw);
         logoutBtn = findViewById(R.id.logoutBtn);
+        conferma = findViewById(R.id.conferma);
+        check = findViewById(R.id.check);
 
+        check.setText("*Confermo la lettura dell'informativa sulla privacy e acconsento " + "\n" + "al trattamento dei miei dati personali.");
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -48,9 +66,9 @@ public class profileActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
 
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
-                        Log.v("profile",""+ chidSnap.getKey());
-                        Log.v("profile",""+ chidSnap.child("email").getValue());
-                     email.setText((CharSequence) chidSnap.child("email").getValue());
+                        Log.v("profile", "" + chidSnap.getKey());
+                        Log.v("profile", "" + chidSnap.child("email").getValue());
+                        email.setText((CharSequence) chidSnap.child("email").getValue());
 
                     }
 
@@ -63,10 +81,6 @@ public class profileActivity extends AppCompatActivity {
                 Log.w("profile", "Failed to read value.", error.toException());
             }
         });
-
-
-
-
 
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
