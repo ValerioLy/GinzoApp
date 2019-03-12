@@ -110,7 +110,7 @@
         android:textSize="10sp" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/txtprivacy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Premi per leggere l'informativa sulla privacy"

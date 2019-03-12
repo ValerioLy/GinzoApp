@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
+
 public class profileActivity extends AppCompatActivity {
     EditText nome, cognome, via, numero, cap, citta, provincia, campanello, codice, telefono, email, account, pwsnuova, psw;
     TextView privacy;
@@ -64,43 +66,57 @@ public class profileActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+
+
+
+        privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent intent = new Intent(profileActivity.this, Privacy.class);
+            startActivity(intent);
+            }
+        });
+
+
+
+
         conferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (!psw.getText().toString().isEmpty() || !pwsnuova.getText().toString().isEmpty()){
+                if (!psw.getText().toString().isEmpty() || !pwsnuova.getText().toString().isEmpty()) {
 
-                    if (psw.getText().toString().length() >6 || pwsnuova.getText().toString().length() >6) {
-                       if ((psw.getText().toString()).equals(pwsnuova.getText().toString())) {
+                    if (psw.getText().toString().length() > 6 || pwsnuova.getText().toString().length() > 6) {
+                        if ((psw.getText().toString()).equals(pwsnuova.getText().toString())) {
 
-                           if (check.isChecked()) {
-                               chiave = mDatabase.push().getKey();
-                               utente.setNome(nome.getText().toString().trim());
-                               utente.setCognome(cognome.getText().toString().trim());
-                               utente.setVia(via.getText().toString().trim());
-                               utente.setNumero(numero.getText().toString().trim());
-                               utente.setCap(cap.getText().toString().trim());
-                               utente.setCitta(citta.getText().toString().trim());
-                               utente.setProvincia(provincia.getText().toString().trim());
-                               utente.setCampanello(campanello.getText().toString().trim());
-                               utente.setCodice(codice.getText().toString().trim());
-                               utente.setTelefono(telefono.getText().toString().trim());
-                               utente.setEmail(email.getText().toString().trim());
+                            if (check.isChecked()) {
+                                chiave = mDatabase.push().getKey();
+                                utente.setNome(nome.getText().toString().trim());
+                                utente.setCognome(cognome.getText().toString().trim());
+                                utente.setVia(via.getText().toString().trim());
+                                utente.setNumero(numero.getText().toString().trim());
+                                utente.setCap(cap.getText().toString().trim());
+                                utente.setCitta(citta.getText().toString().trim());
+                                utente.setProvincia(provincia.getText().toString().trim());
+                                utente.setCampanello(campanello.getText().toString().trim());
+                                utente.setCodice(codice.getText().toString().trim());
+                                utente.setTelefono(telefono.getText().toString().trim());
+                                utente.setEmail(email.getText().toString().trim());
 
-                               mDatabase.child(chiave).setValue(utente);
-                           } else {
-                               new AlertDialog.Builder(profileActivity.this)
-                                       .setTitle("Conferma la lettura della privacy")
-                                       .setNegativeButton("Ok", null)
-                                       .show();
-                           }
+                                mDatabase.child(chiave).setValue(utente);
+                            } else {
+                                new AlertDialog.Builder(profileActivity.this)
+                                        .setTitle("Conferma la lettura della privacy")
+                                        .setNegativeButton("Ok", null)
+                                        .show();
+                            }
 
-                       } else {
-                           new AlertDialog.Builder(profileActivity.this)
-                                   .setTitle("Le Password devono essere uguali")
-                                   .setNegativeButton("Ok", null)
-                                   .show();
-                       }
+                        } else {
+                            new AlertDialog.Builder(profileActivity.this)
+                                    .setTitle("Le Password devono essere uguali")
+                                    .setNegativeButton("Ok", null)
+                                    .show();
+                        }
 
                     } else {
                         new AlertDialog.Builder(profileActivity.this)
@@ -118,20 +134,8 @@ public class profileActivity extends AppCompatActivity {
                 }
 
 
-
             }
         });
-
-
-
-
-
-
-
-
-
-
-
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
