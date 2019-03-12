@@ -72,8 +72,8 @@ public class profileActivity extends AppCompatActivity {
         privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(profileActivity.this, Privacy.class);
-            startActivity(intent);
+                Intent intent = new Intent(profileActivity.this, Privacy.class);
+                startActivity(intent);
             }
         });
 
@@ -90,6 +90,7 @@ public class profileActivity extends AppCompatActivity {
                         if ((psw.getText().toString()).equals(pwsnuova.getText().toString())) {
 
                             if (check.isChecked()) {
+                                Toast.makeText(profileActivity.this,"Account Aggiornato", Toast.LENGTH_LONG).show();
                                 chiave = mDatabase.push().getKey();
                                 utente.setNome(nome.getText().toString().trim());
                                 utente.setCognome(cognome.getText().toString().trim());
@@ -104,6 +105,10 @@ public class profileActivity extends AppCompatActivity {
                                 utente.setEmail(email.getText().toString().trim());
 
                                 mDatabase.child(chiave).setValue(utente);
+
+
+                                Intent intent = new Intent(profileActivity.this, MainActivity.class);
+                                startActivity(intent);
                             } else {
                                 new AlertDialog.Builder(profileActivity.this)
                                         .setTitle("Conferma la lettura della privacy")

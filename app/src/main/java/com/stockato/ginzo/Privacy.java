@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static android.content.Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP;
+
 public class Privacy extends AppCompatActivity {
-TextView txtPrivacy;
-Button chiudi;
+    TextView txtPrivacy;
+    Button chiudi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +26,17 @@ Button chiudi;
                 "\n" +
                 "Prima di una specifica normativa, l'unica tutela era fornita dalla giurisprudenza della Suprema Corte di Cassazione. Alla fine del XX secolo per rispettare gli Accordi di Schengen e per dare attuazione alla direttiva europea 95/46/CE del 24 ottobre 1995, relativa alla tutela delle persone fisiche con riguardo al trattamento dei dati personali venne emanata la legge 31 dicembre 1996 n. 675, che entrò in vigore nel maggio 1997.\n" +
                 "\n" +
-                "Col passare del tempo, a tale norma si erano affiancate ulteriori leggi, riguardanti singoli e specifici aspetti del trattamento dei dati. La sopravvenuta complessità normativa creatasi in seguito all'approvazione di diverse disposizioni portò all'emanazione del d.lgs 30 giugno 2003, n. 196 che ha riordinato interamente la materia. Nel 2011 e 2012 altre disposizioni hanno emendato il codice del 2003, in particolare abolendo alcuni passaggi burocratici (tipo il DPS) oppure le regole per le informazioni sensibili fornite spontaneamente mediante il proprio CV.\n" );
+                "Col passare del tempo, a tale norma si erano affiancate ulteriori leggi, riguardanti singoli e specifici aspetti del trattamento dei dati. La sopravvenuta complessità normativa creatasi in seguito all'approvazione di diverse disposizioni portò all'emanazione del d.lgs 30 giugno 2003, n. 196 che ha riordinato interamente la materia. Nel 2011 e 2012 altre disposizioni hanno emendato il codice del 2003, in particolare abolendo alcuni passaggi burocratici (tipo il DPS) oppure le regole per le informazioni sensibili fornite spontaneamente mediante il proprio CV.\n");
+
+
+
+
 
         chiudi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Privacy.this, profileActivity.class);
-                startActivity(intent);
+
+                finish();
             }
         });
     }

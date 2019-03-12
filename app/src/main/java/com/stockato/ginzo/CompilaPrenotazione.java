@@ -1,6 +1,7 @@
 package com.stockato.ginzo;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,13 +18,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class CompilaPrenotazione extends AppCompatActivity {
-    TextView txtCompila, txtRic, txtprivacy;
+    TextView txtCompila, txtRic, privacy;
     Button btnGiorno, btnSubmit;
     CheckBox checkBox;
     String dataPassato;
     String idPassato;
     String oraD;
-    EditText editNome, editCognome, editTelefono, editEmail;
+    EditText editNome, editCognome, editTelefono, editEmail, editPersone;
     private DatabaseReference mDatabase;
     private User utente;
 
@@ -40,7 +41,7 @@ public class CompilaPrenotazione extends AppCompatActivity {
             oraD = bundle.getString("ora");
         }
 
-        txtprivacy = findViewById(R.id.txtPrivacy);
+        privacy = (TextView) findViewById(R.id.privacy);
         utente = new User();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
 
@@ -58,7 +59,7 @@ public class CompilaPrenotazione extends AppCompatActivity {
         editCognome = findViewById(R.id.editCognome);
         editTelefono = findViewById(R.id.editTelefono);
         editEmail = findViewById(R.id.editEmail);
-
+        editPersone = findViewById(R.id.editPersone);
         btnGiorno.setText(dataPassato + " " + oraD);
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -84,6 +85,38 @@ public class CompilaPrenotazione extends AppCompatActivity {
             public void onCancelled(DatabaseError error) {
 
                 Log.w("profile", "Failed to read value.", error.toException());
+            }
+        });
+
+
+        privacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CompilaPrenotazione.this, Privacy.class);
+                startActivity(intent);
+            }
+        });
+
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!editNome.getText().toString().isEmpty() || !editCognome.getText().toString().isEmpty() || !editEmail.getText().toString().isEmpty() || !editTelefono.getText().toString().isEmpty() || !editPersone.getText().toString().isEmpty()) {
+                    if (checkBox.isChecked()) {
+
+                    } else {
+                        new AlertDialog.Builder(CompilaPrenotazione.this)
+                                .setTitle("Conferma la lettura della privacy")
+                                .setNegativeButton("Ok", null)
+                                .show();
+                    }
+                } else {
+                    new AlertDialog.Builder(CompilaPrenotazione.this)
+                            .setTitle("I Campi devono essere riempiti")
+                            .setNegativeButton("Ok", null)
+                            .show();
+                }
+
             }
         });
 
