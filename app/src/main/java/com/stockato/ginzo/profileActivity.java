@@ -28,6 +28,8 @@ public class profileActivity extends AppCompatActivity {
     Button logoutBtn, conferma;
     CheckBox check;
     private DatabaseReference mDatabase;
+    private User utente;
+    String chiave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,41 @@ public class profileActivity extends AppCompatActivity {
 
         check.setText("*Confermo la lettura dell'informativa sulla privacy e acconsento " + "\n" + "al trattamento dei miei dati personali.");
 
+        utente = new User();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        conferma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chiave = mDatabase.push().getKey();
+                utente.setNome(nome.getText().toString().trim());
+                utente.setCognome(cognome.getText().toString().trim());
+                utente.setVia(via.getText().toString().trim());
+                utente.setNumero(numero.getText().toString().trim());
+                utente.setCap(cap.getText().toString().trim());
+                utente.setCitta(citta.getText().toString().trim());
+                utente.setProvincia(provincia.getText().toString().trim());
+                utente.setCampanello(campanello.getText().toString().trim());
+                utente.setCodice(codice.getText().toString().trim());
+                utente.setTelefono(telefono.getText().toString().trim());
+                utente.setEmail(email.getText().toString().trim());
+
+                mDatabase.child(chiave).setValue(utente);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -68,7 +103,19 @@ public class profileActivity extends AppCompatActivity {
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
                         Log.v("profile", "" + chidSnap.getKey());
                         Log.v("profile", "" + chidSnap.child("email").getValue());
+                        nome.setText((CharSequence) chidSnap.child("nome").getValue());
+                        cognome.setText((CharSequence) chidSnap.child("cognome").getValue());
+                        via.setText((CharSequence) chidSnap.child("via").getValue());
+                        numero.setText((CharSequence) chidSnap.child("numero").getValue());
+                        cap.setText((CharSequence) chidSnap.child("cap").getValue());
+                        citta.setText((CharSequence) chidSnap.child("citta").getValue());
+                        provincia.setText((CharSequence) chidSnap.child("provincia").getValue());
+                        campanello.setText((CharSequence) chidSnap.child("campanello").getValue());
+                        codice.setText((CharSequence) chidSnap.child("codice").getValue());
+                        telefono.setText((CharSequence) chidSnap.child("telefono").getValue());
                         email.setText((CharSequence) chidSnap.child("email").getValue());
+                        account.setText((CharSequence) chidSnap.child("email").getValue());
+
 
                     }
 
