@@ -1,7 +1,9 @@
 package com.stockato.ginzo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,24 +64,61 @@ public class profileActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-
         conferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chiave = mDatabase.push().getKey();
-                utente.setNome(nome.getText().toString().trim());
-                utente.setCognome(cognome.getText().toString().trim());
-                utente.setVia(via.getText().toString().trim());
-                utente.setNumero(numero.getText().toString().trim());
-                utente.setCap(cap.getText().toString().trim());
-                utente.setCitta(citta.getText().toString().trim());
-                utente.setProvincia(provincia.getText().toString().trim());
-                utente.setCampanello(campanello.getText().toString().trim());
-                utente.setCodice(codice.getText().toString().trim());
-                utente.setTelefono(telefono.getText().toString().trim());
-                utente.setEmail(email.getText().toString().trim());
 
-                mDatabase.child(chiave).setValue(utente);
+                if (!psw.getText().toString().isEmpty() || !pwsnuova.getText().toString().isEmpty()){
+
+                    if (psw.getText().toString().length() >6 || pwsnuova.getText().toString().length() >6) {
+                       if ((psw.getText().toString()).equals(pwsnuova.getText().toString())) {
+
+                           if (check.isChecked()) {
+                               chiave = mDatabase.push().getKey();
+                               utente.setNome(nome.getText().toString().trim());
+                               utente.setCognome(cognome.getText().toString().trim());
+                               utente.setVia(via.getText().toString().trim());
+                               utente.setNumero(numero.getText().toString().trim());
+                               utente.setCap(cap.getText().toString().trim());
+                               utente.setCitta(citta.getText().toString().trim());
+                               utente.setProvincia(provincia.getText().toString().trim());
+                               utente.setCampanello(campanello.getText().toString().trim());
+                               utente.setCodice(codice.getText().toString().trim());
+                               utente.setTelefono(telefono.getText().toString().trim());
+                               utente.setEmail(email.getText().toString().trim());
+
+                               mDatabase.child(chiave).setValue(utente);
+                           } else {
+                               new AlertDialog.Builder(profileActivity.this)
+                                       .setTitle("Conferma la lettura della privacy")
+                                       .setNegativeButton("Ok", null)
+                                       .show();
+                           }
+
+                       } else {
+                           new AlertDialog.Builder(profileActivity.this)
+                                   .setTitle("Le Password devono essere uguali")
+                                   .setNegativeButton("Ok", null)
+                                   .show();
+                       }
+
+                    } else {
+                        new AlertDialog.Builder(profileActivity.this)
+                                .setTitle("La Password deve essere minimo di 6 caratteri")
+                                .setNegativeButton("Ok", null)
+                                .show();
+
+                    }
+
+                } else {
+                    new AlertDialog.Builder(profileActivity.this)
+                            .setTitle("Le Password sono vuote")
+                            .setNegativeButton("Ok", null)
+                            .show();
+                }
+
+
+
             }
         });
 
