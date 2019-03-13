@@ -38,7 +38,6 @@ public class ItemAdapter extends BaseAdapter {
 
     class ViewHolder {
         TextView titolo, descrizione, prezzo;
-        ImageButton imageCarrello;
         ImageView img;
     }
 
@@ -55,7 +54,6 @@ public class ItemAdapter extends BaseAdapter {
             vHolder.descrizione=convertView.findViewById(R.id.descrizione);
             vHolder.prezzo=convertView.findViewById(R.id.prezzo);
             vHolder.img=convertView.findViewById(R.id.img);
-            vHolder.imageCarrello=convertView.findViewById(R.id.imageCarrello);
             convertView.setTag((vHolder));
 
         }
@@ -66,7 +64,6 @@ public class ItemAdapter extends BaseAdapter {
         viewHolder.descrizione.setText(itemSushi.getDescrizione());
         viewHolder.prezzo.setText(itemSushi.getPrezzo());
         viewHolder.img.setImageResource(itemSushi.getImg());
-        viewHolder.imageCarrello.setImageResource(R.drawable.carrello);
 
         return convertView;
     }
