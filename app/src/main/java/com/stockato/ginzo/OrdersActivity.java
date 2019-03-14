@@ -204,6 +204,83 @@ ItemAdapter itemAdapter;
         itemSushi25.add(new ItemSushi(17, "PANANGKAI", "Pollo alla piastra con curry latte di cocco, mel...", "12:00 euro", R.drawable.panangkai));
         itemSushi25.add(new ItemSushi(18, "TORI TONKATSU", "Pollo fritto in tempura di panko con salsa Tonkat...", "12:00 euro", R.drawable.toritonkatsu));
 
+        // 27
+        ArrayList<ItemSushi> itemSushi27 = new ArrayList<>();
+        itemSushi27.add(new ItemSushi(0, "BARCA MISTA 30..", "30 pezzi assortiti, un mix di tutti i pezzi più p...", "35:00 euro", R.drawable.barca30));
+        itemSushi27.add(new ItemSushi(1, "BARCA MISTA 40.", "40 pezzi assortiti, un mix di tutti i pezzi più p...", "40:00 euro", R.drawable.barca30));
+        itemSushi27.add(new ItemSushi(2, "BARCA MISTA 50..", "50 pezzi assortiti, un mix di tutti i pezzi più p...", "59:00 euro", R.drawable.barca30));
+        itemSushi27.add(new ItemSushi(3, "BARCA MISTA 60..", "60 pezzi assortiti, un mix di tutti i pezzi più p...", "69:00 euro", R.drawable.barca30));
+        itemSushi27.add(new ItemSushi(4, "BARCA MISTA 70..", "70 pezzi assortiti, un mix di tutti i pezzi più p...", "83:00 euro", R.drawable.barca30));
+        itemSushi27.add(new ItemSushi(5, "BARCA MISTA 80...", "80 pezzi assortiti, un mix di tutti i pezzi più p...","95:00 euro", R.drawable.barca30));
+        itemSushi27.add(new ItemSushi(6, "BARCA MISTA 100..", "100 pezzi assortiti, un mix di tutti i pezzi più p...", "120:00 euro", R.drawable.barca30));
+        itemSushi27.add(new ItemSushi(7, "BARCA VEGGY", "30 Pezzi assortiti di nigiri e maki vegetariani N...", "35:00 euro", R.drawable.barcaveggy));
+
+
+        // 29
+        ArrayList<ItemSushi> itemSushi29 = new ArrayList<>();
+        itemSushi29.add(new ItemSushi(0, "NIKKI BEACH", "48 pezzi assortiti per 2/3 persone", "52:00 euro", R.drawable.nikkibeach));
+        itemSushi29.add(new ItemSushi(1, "FULLMOONPARTY...", "78 pezzi assortiti per 4/5 persone", "82:00 euro", R.drawable.fullmoon));
+
+        // 31
+        ArrayList<ItemSushi> itemSushi31 = new ArrayList<>();
+        itemSushi31.add(new ItemSushi(0, "STRAWBERRY NUT..", "Rolls con riso al latte di cocco, ripieni di frag..", "6:00 euro", R.drawable.strawberrynutella));
+        itemSushi31.add(new ItemSushi(1, "NUTELLA MAKI", "Arrotolato di riso con cocco avvolto in sfoglia d...", "5:00 euro", R.drawable.nutellamaki));
+        itemSushi31.add(new ItemSushi(2, "MANGO SALAD", "Mango fresco, lime, menta", "6:00 euro", R.drawable.mangosalad));
+        itemSushi31.add(new ItemSushi(3, "UJIMACHA", "Gelato al tea verde", "4:00 euro", R.drawable.ujimacha));
+        itemSushi31.add(new ItemSushi(4, "TIRAMISU' AL THE'", "Al tea verde o cioccolato", "5:00 euro", R.drawable.tiramisutheverde));
+        itemSushi31.add(new ItemSushi(5, "CHEESECAKE PA..", "Torta Cheese-Cake al Passion Fruit e Yoghurt","6:00 euro", R.drawable.cheesecakepancake));
+        itemSushi31.add(new ItemSushi(6, "CHEESECAKE VEG..", "Cheesecake 100/Vegana-Bio-Gluten Free, al ciocc...","6:00 euro", R.drawable.cheesecakevegetale));
+        itemSushi31.add(new ItemSushi(7, "BANZAI", "Tris di dolci, tiramisù'tea verde e cioccolato...", "9:90 euro", R.drawable.banzai));
+        itemSushi31.add(new ItemSushi(8, "ZUSHI MUFFIN", "Tortino con cuore di cioccolato fondente e gelato...", "6:00 euro", R.drawable.sushimuffin));
+
+
+        // 33
+        ArrayList<ItemSushi> itemSushi33 = new ArrayList<>();
+        itemSushi33.add(new ItemSushi(0, "ZUSHI BEER ART..", "Birra Artigianale allo Zenzero, Gluten Free, alc...", "5:90 euro", R.drawable.zushibeerart));
+        itemSushi33.add(new ItemSushi(1, "SAPPORO", "Birra giapponese in lattina - Alc.5/Vol.", "6:50 euro", R.drawable.sapporo));
+        itemSushi33.add(new ItemSushi(2, "ASAHI DRY STEN..", "Birra giapponese di malto d'orzo in bottiglia -A...", "5:00 euro", R.drawable.asahidrysten));
+        itemSushi33.add(new ItemSushi(3, "KIRINICHIBAN", "Una delle più antiche birre di malto d'orzo Giapp..", "4:00 euro", R.drawable.kirinbeach));
+
+        // 34
+        ArrayList<ItemSushi> itemSushi34 = new ArrayList<>();
+        itemSushi34.add(new ItemSushi(0, "FERRARI PERLE'", "Ferrari Perlè - Trento Doc-12, 5/vol", "40:00 euro", R.drawable.ferrariperle));
+        itemSushi34.add(new ItemSushi(1, "DOM PERIGNON", "Dom Perignon", "200:00 euro", R.drawable.sapporo));
+        itemSushi34.add(new ItemSushi(2, "CA DEL BOSCO C..", "Ca Del Bosco Cuvee Prestige", "43:00 euro", R.drawable.caldebosco));
+        itemSushi34.add(new ItemSushi(3, "CA DEL BOSCO C...", "Ca Del Bosco Cuvee Prestige(37cl)", "22:00 euro", R.drawable.caldebosco));
+        itemSushi34.add(new ItemSushi(4, "CHAMPAGNE PERR...", "Champagne Perrier Jouet", "50:00 euro", R.drawable.champagneperr));
+        itemSushi34.add(new ItemSushi(5, "LIGHEA DONNA...", "Lighea - Donnafugata", "24:00 euro", R.drawable.ligheadonna));
+        itemSushi34.add(new ItemSushi(6, "CHABLIS SAINT...", "Chardonnay della Borgogna-12,5/vol", "35:00 euro", R.drawable.chablis));
+        itemSushi34.add(new ItemSushi(7, "PINOT GRIGIO-...", "Pinot grigio - Colterenzio-12,5/vol", "24:00 euro", R.drawable.pinotgrigio));
+        itemSushi34.add(new ItemSushi(8, "LUGANA CA DEI..", "Vino bianco - 13/vol.", "13:00 euro", R.drawable.luganacadei));
+        itemSushi34.add(new ItemSushi(9, "GEWURZTRAMINER...", "Vino bianco in bottiglia da 75 cl - 14,5/vol", "24:00 euro", R.drawable.gewurztraminer));
+        itemSushi34.add(new ItemSushi(10, "BELLAVISTA CUV...", "La regina della Franciacorta - 12,5/vol", "45:00 euro", R.drawable.bellavistacuv));
+        itemSushi34.add(new ItemSushi(11, "PROSECCO DI VA...", "Prosecco di valdobbiadene DOCG Millesimato -11/..", "18:00 euro", R.drawable.prosecco));
+        itemSushi34.add(new ItemSushi(12, "RIESLING-ST.M...", "Alto Adige-12.5/VOL", "25:00 euro", R.drawable.riesling));
+        itemSushi34.add(new ItemSushi(13, "POUILLY FUME'...", "Sauvignon della Loira-12,5/vol", "39:00 euro", R.drawable.poully));
+
+        //  35
+        ArrayList<ItemSushi> itemSushi35 = new ArrayList<>();
+        itemSushi35.add(new ItemSushi(0, "ACQUA LURISIA", "Acqua minerale naturale imbottigliata nella sorge..", "3:00 euro", R.drawable.acqualurisia));
+        itemSushi35.add(new ItemSushi(1, "ACQUA LURISIA", "Acqua minerale gas imbottigliata nella sorgente d..", "3:00 euro", R.drawable.acqualurisia));
+        itemSushi35.add(new ItemSushi(2, "TY - NANT", "Acqua nat/gas del Galles", "1:80 euro", R.drawable.tynant));
+        itemSushi35.add(new ItemSushi(3, "COCA COLA", "Bottiglietta in vetro", "3:50 euro", R.drawable.cocacola));
+        itemSushi35.add(new ItemSushi(4, "COCA COLA ZERO", "Bottiglietta in vetro", "3:50 euro", R.drawable.cocacolazero));
+        itemSushi35.add(new ItemSushi(5, "FANTA", "Tea verde naturale senza zucchero in lattina", "3:50 euro", R.drawable.fanta));
+        itemSushi35.add(new ItemSushi(6, "POKKA GREEN TEA", "Tea verde naturale senza zucchero in lattina", "3:00 euro", R.drawable.pokkagreentea));
+        itemSushi35.add(new ItemSushi(7, "POKKA JASMINE", "Tea verde naturale al gelsomino in lattina ", "3:00 euro", R.drawable.pokkajasmine));
+        itemSushi35.add(new ItemSushi(8, "FOCO MANGO JUI", "Succo di mango - puroal 30/!", "3:50 euro", R.drawable.focomanjojui));
+        itemSushi35.add(new ItemSushi(9, "GREEN TEA POME..", "Tea verde naturale al melograno antiossidante", "3:90 euro", R.drawable.greenteapome));
+        itemSushi35.add(new ItemSushi(10, "GREEN TEA GING..", "Tea verde naturale al ginseng e miele", "3:90 euro", R.drawable.greenteaging));
+
+
+        // 36
+        ArrayList<ItemSushi> itemSushi36 = new ArrayList<>();
+        itemSushi36.add(new ItemSushi(0, "SAKE' SHOCHIKUB..", "Junmaishu -14/vol Da bere Caldo a 40° oppure Fre..", "7:00 euro", R.drawable.sakeschochikub));
+        itemSushi36.add(new ItemSushi(1, "TAKARA SIERRA..", "Sake' dal gusto delicato da bere freddo -12/vol", "12:00 euro", R.drawable.takarasierra));
+        itemSushi36.add(new ItemSushi(2, "NIKKA WHISKY", "Miglior blended whisky giapponese di meno di 12 a...", "60:00 euro", R.drawable.nikkawhisky));
+
+
+
 
 
 
@@ -283,27 +360,35 @@ ItemAdapter itemAdapter;
             itemAdapter = new ItemAdapter(itemSushi25, OrdersActivity.this);
             listOrders.setAdapter(itemAdapter);
         }else if(idItem == 27) {
+            itemAdapter = new ItemAdapter(itemSushi27, OrdersActivity.this);
+            listOrders.setAdapter(itemAdapter);
 
         }else if(idItem == 29) {
-
+            itemAdapter = new ItemAdapter(itemSushi29, OrdersActivity.this);
+            listOrders.setAdapter(itemAdapter);
         }else if(idItem == 31) {
-
+            itemAdapter = new ItemAdapter(itemSushi31, OrdersActivity.this);
+            listOrders.setAdapter(itemAdapter);
         }
 
         else if(idItem == 33) {
-
+            itemAdapter = new ItemAdapter(itemSushi33, OrdersActivity.this);
+            listOrders.setAdapter(itemAdapter);
         }
 
         else if(idItem == 34) {
-
+            itemAdapter = new ItemAdapter(itemSushi34, OrdersActivity.this);
+            listOrders.setAdapter(itemAdapter);
         }
 
         else if(idItem == 35) {
-
+            itemAdapter = new ItemAdapter(itemSushi35, OrdersActivity.this);
+            listOrders.setAdapter(itemAdapter);
         }
 
         else if(idItem == 36) {
-
+            itemAdapter = new ItemAdapter(itemSushi36, OrdersActivity.this);
+            listOrders.setAdapter(itemAdapter);
         }
 
 
