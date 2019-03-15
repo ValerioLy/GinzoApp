@@ -84,8 +84,6 @@ public class OrdinaActivity extends AppCompatActivity {
                     bundle.putLong("idItem", l);
                     intent.putExtras(bundle);
                     startActivity(intent);
-                } else {
-
                 }
 
             }

@@ -14,6 +14,9 @@ public class ItemSushi {
         this.prezzo = prezzo;
         this.img = img;
     }
+    public ItemSushi(){
+
+    }
 
     public int getId() {
         return id;
