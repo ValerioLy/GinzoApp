@@ -1,22 +1,32 @@
 package com.stockato.ginzo;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+
 public class DetailSushi extends AppCompatActivity {
     TextView titolotxt, descrizionetxt, prezzotxt, numero, textShop;
     ImageView imgSushi;
     ImageButton imgShop;
     String titolo, descrizione, prezzo;
-    int img;
+    int id, img;
     Button piu, meno, carrello;
     int count;
-
+    DatabaseReference reference;
+    String key;
+    ItemSushi itemSushi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,14 +47,20 @@ public class DetailSushi extends AppCompatActivity {
         textShop = findViewById(R.id.textShop);
         imgShop = findViewById(R.id.imgShop);
 
+        itemSushi = new ItemSushi();
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Ordine");
 
         if (getIntent().getExtras() != null) {
             Bundle bundle = getIntent().getExtras();
+            id = bundle.getInt("id");
             titolo = bundle.getString("titolo");
             descrizione = bundle.getString("descrizione");
             prezzo = bundle.getString("prezzo");
             img = bundle.getInt("img");
         }
+
+
 
         titolotxt.setText(titolo);
         descrizionetxt.setText(descrizione);
@@ -55,8 +71,8 @@ public class DetailSushi extends AppCompatActivity {
         meno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(count == 0){
-                }else {
+                if (count == 0) {
+                } else {
                     count--;
                     numero.setText(String.valueOf(count));
                 }
@@ -75,10 +91,21 @@ public class DetailSushi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textShop.setText(String.valueOf(count));
+                key =reference.push().getKey();
+                itemSushi.setTitolo(titolotxt.getText().toString());
+                itemSushi.setPrezzo(prezzotxt.getText().toString());
+                itemSushi.setImg(img);
+                reference.child(key).setValue(itemSushi);
+
             }
         });
 
-
-
+        imgShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailSushi.this, CarrelloActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
