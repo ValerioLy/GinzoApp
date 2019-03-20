@@ -1,8 +1,12 @@
 package com.stockato.ginzo;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -56,10 +60,6 @@ public class CarrelloActivity extends AppCompatActivity {
                         ItemSushi post = chidSnap.getValue(ItemSushi.class);
                         arraySushi.add(post);
 
-//                        itemSushi.setImg((Integer) chidSnap.child("img").getValue());
-//                        itemSushi.setPrezzo((String) chidSnap.child("prezzo").getValue());
-//                        itemSushi.setNumero((String) chidSnap.child("numero").getValue());
-//                        arraySushi.add(itemSushi);
                         carrelloAdapter = new CarrelloAdapter(CarrelloActivity.this, arraySushi);
                         list.setAdapter(carrelloAdapter);
 
@@ -72,6 +72,28 @@ public class CarrelloActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError error) {
 
                 Log.w("profile", "Failed to read value.", error.toException());
+            }
+        });
+
+
+        svuota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                new AlertDialog.Builder(CarrelloActivity.this)
+                        .setTitle("Vuoi svuotare gli ordini?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                mDatabase.removeValue();
+                                Intent intent = new Intent(CarrelloActivity.this, CarrelloActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
             }
         });
 
