@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,6 +29,7 @@ public class DetailSushi extends AppCompatActivity {
     DatabaseReference reference;
     String key;
     ItemSushi itemSushi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,7 @@ public class DetailSushi extends AppCompatActivity {
         imgShop = findViewById(R.id.imgShop);
 
         itemSushi = new ItemSushi();
-
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference().child("Ordine");
 
         if (getIntent().getExtras() != null) {
@@ -59,7 +62,6 @@ public class DetailSushi extends AppCompatActivity {
             prezzo = bundle.getString("prezzo");
             img = bundle.getInt("img");
         }
-
 
 
         titolotxt.setText(titolo);
@@ -91,10 +93,12 @@ public class DetailSushi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 textShop.setText(String.valueOf(count));
-                key =reference.push().getKey();
+                key = reference.push().getKey();
                 itemSushi.setTitolo(titolotxt.getText().toString());
                 itemSushi.setPrezzo(prezzotxt.getText().toString());
-                itemSushi.setImg(img);
+                itemSushi.setNumero(String.valueOf(count));
+                itemSushi.setIdUser(user.getUid());
+//                itemSushi.setImg(img);
                 reference.child(key).setValue(itemSushi);
 
             }

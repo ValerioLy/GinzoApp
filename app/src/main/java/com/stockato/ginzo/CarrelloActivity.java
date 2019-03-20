@@ -23,8 +23,6 @@ public class CarrelloActivity extends AppCompatActivity {
     TextView txtTotale;
     ListView list;
     Button svuota, prosegui;
-    private String titolo, prezzo;
-    private int id, img;
     CarrelloAdapter carrelloAdapter;
     private DatabaseReference mDatabase;
     ItemSushi itemSushi;
@@ -43,10 +41,7 @@ public class CarrelloActivity extends AppCompatActivity {
         prosegui = findViewById(R.id.prosegui);
 
         arraySushi = new ArrayList<>();
-        if (getIntent().getExtras() != null) {
-            Bundle bundle = getIntent().getExtras();
 
-        }
         itemSushi = new ItemSushi();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ordine");
 
@@ -59,7 +54,6 @@ public class CarrelloActivity extends AppCompatActivity {
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
                         ItemSushi post = chidSnap.getValue(ItemSushi.class);
                         arraySushi.add(post);
-
                         carrelloAdapter = new CarrelloAdapter(CarrelloActivity.this, arraySushi);
                         list.setAdapter(carrelloAdapter);
 

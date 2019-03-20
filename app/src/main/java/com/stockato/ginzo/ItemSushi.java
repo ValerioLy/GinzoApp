@@ -1,7 +1,6 @@
 package com.stockato.ginzo;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+
 
 public class ItemSushi {
     private int id;
@@ -10,14 +9,18 @@ public class ItemSushi {
     private String prezzo;
     private int img;
     private String numero;
+    private String idUser;
 
-    public ItemSushi(int id, String titolo, String descrizione, String prezzo, int img, String numero) {
+
+
+    public ItemSushi(int id, String titolo, String descrizione, String prezzo, int img, String numero, String idUser) {
         this.id = id;
         this.titolo = titolo;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
         this.numero = numero;
         this.img = img;
+        this.idUser = idUser;
     }
     public ItemSushi(){
 
@@ -69,6 +72,14 @@ public class ItemSushi {
 
     public void setImg(int img) {
         this.img = img;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
 
