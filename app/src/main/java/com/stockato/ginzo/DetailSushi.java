@@ -1,7 +1,9 @@
 package com.stockato.ginzo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,11 +13,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class DetailSushi extends AppCompatActivity {
@@ -29,13 +37,13 @@ public class DetailSushi extends AppCompatActivity {
     DatabaseReference reference;
     String key;
     ItemSushi itemSushi;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_sushi);
 
         getSupportActionBar().hide();
+
 
         titolotxt = findViewById(R.id.titolo);
         descrizionetxt = findViewById(R.id.descrizione);
@@ -98,7 +106,7 @@ public class DetailSushi extends AppCompatActivity {
                 itemSushi.setPrezzo(prezzotxt.getText().toString());
                 itemSushi.setNumero(String.valueOf(count));
                 itemSushi.setIdUser(user.getUid());
-//                itemSushi.setImg(img);
+
                 reference.child(key).setValue(itemSushi);
 
             }

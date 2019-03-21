@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +29,7 @@ public class CarrelloActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     ItemSushi itemSushi;
     ArrayList<ItemSushi> arraySushi;
-
+    String  idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,12 @@ public class CarrelloActivity extends AppCompatActivity {
         arraySushi = new ArrayList<>();
 
         itemSushi = new ItemSushi();
+
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        idUser = user.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Ordine");
+
+
 
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -52,10 +59,17 @@ public class CarrelloActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
 
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
+                        String idUserChild = (String) chidSnap.child("idUser").getValue();
                         ItemSushi post = chidSnap.getValue(ItemSushi.class);
-                        arraySushi.add(post);
-                        carrelloAdapter = new CarrelloAdapter(CarrelloActivity.this, arraySushi);
-                        list.setAdapter(carrelloAdapter);
+                        if (idUser == idUserChild) {
+                            Log.i("iduser","idUserChild"+idUserChild);
+                            Log.i("iduser","idUser"+idUser);
+                            arraySushi.add(post);
+                            carrelloAdapter = new CarrelloAdapter(CarrelloActivity.this, arraySushi);
+                            list.setAdapter(carrelloAdapter);
+                        }
+
+
 
                     }
 
