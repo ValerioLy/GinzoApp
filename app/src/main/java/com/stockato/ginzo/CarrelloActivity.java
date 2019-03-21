@@ -30,6 +30,7 @@ public class CarrelloActivity extends AppCompatActivity {
     ItemSushi itemSushi;
     ArrayList<ItemSushi> arraySushi;
     String  idUser;
+    ItemSushi post;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,18 +61,18 @@ public class CarrelloActivity extends AppCompatActivity {
 
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
                         String idUserChild = (String) chidSnap.child("idUser").getValue();
-                        ItemSushi post = chidSnap.getValue(ItemSushi.class);
-                        if (idUser == idUserChild) {
-                            Log.i("iduser","idUserChild"+idUserChild);
-                            Log.i("iduser","idUser"+idUser);
-                            arraySushi.add(post);
+
+                        if (idUser.equals(idUserChild)) {
+                            Log.i("diocane", ""+idUserChild+idUser);
+                             post = chidSnap.getValue(ItemSushi.class);
+                             arraySushi.add(post);
                             carrelloAdapter = new CarrelloAdapter(CarrelloActivity.this, arraySushi);
                             list.setAdapter(carrelloAdapter);
+
                         }
 
-
-
                     }
+
 
                 }
             }
