@@ -172,12 +172,20 @@
     <Button
         android:id="@+id/logoutBtn"
         android:layout_width="342dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Logout"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="143dp" />
 
+    <Button
+        android:id="@+id/pswUpdate"
+        android:layout_width="342dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorBlue"
+        android:background="@color/colorWhite"
+        android:text="Cambia Password" />
 
 
 </LinearLayout>

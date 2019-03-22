@@ -29,7 +29,7 @@ import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
 public class profileActivity extends AppCompatActivity {
     EditText nome, cognome, via, numero, cap, citta, provincia, campanello, codice, telefono, email, account, pwsnuova, psw;
     TextView privacy;
-    Button logoutBtn, conferma;
+    Button logoutBtn, conferma, pswUpdate;
     CheckBox check;
     private DatabaseReference mDatabase;
     private User utente;
@@ -59,6 +59,7 @@ public class profileActivity extends AppCompatActivity {
         logoutBtn = findViewById(R.id.logoutBtn);
         conferma = findViewById(R.id.conferma);
         check = findViewById(R.id.check);
+        pswUpdate = findViewById(R.id.pswUpdate);
 
         check.setText("*Confermo la lettura dell'informativa sulla privacy e acconsento " + "\n" + "al trattamento dei miei dati personali.");
 
@@ -77,6 +78,13 @@ public class profileActivity extends AppCompatActivity {
             }
         });
 
+        pswUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(profileActivity.this, CambiaPassword.class);
+                startActivity(intent);
+            }
+        });
 
 
 
