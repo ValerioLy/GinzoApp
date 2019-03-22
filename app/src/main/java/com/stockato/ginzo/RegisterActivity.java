@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     User user;
     DatabaseReference reference;
     String key;
+    Button forgetPsw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         pswTxt = findViewById(R.id.pwsTxt);
         registerBtn = findViewById(R.id.registerBtn);
         login = findViewById(R.id.goLogin);
-
+        forgetPsw = findViewById(R.id.forgetPsw);
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -55,6 +56,14 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+
+        forgetPsw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterActivity.this, ResetPassword.class);
+                startActivity(intent);
+            }
+        });
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override

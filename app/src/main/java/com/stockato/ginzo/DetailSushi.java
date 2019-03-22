@@ -89,7 +89,7 @@ public class DetailSushi extends AppCompatActivity {
         idUser = utente.getUid();
         reference = FirebaseDatabase.getInstance().getReference().child("Ordine");
 
-//////////////////
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -124,7 +124,7 @@ public class DetailSushi extends AppCompatActivity {
             }
         });
 
-/////////////////
+
 
 
         meno.setOnClickListener(new View.OnClickListener() {
