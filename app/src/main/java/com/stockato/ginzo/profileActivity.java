@@ -34,7 +34,8 @@ public class profileActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private User utente;
     String chiave;
-
+    FirebaseUser user;
+    String idUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +64,17 @@ public class profileActivity extends AppCompatActivity {
 
         check.setText("*Confermo la lettura dell'informativa sulla privacy e acconsento " + "\n" + "al trattamento dei miei dati personali.");
 
+
+         user = FirebaseAuth.getInstance().getCurrentUser();
+         idUser = user.getEmail();
+
+
+
+
         utente = new User();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        Log.v("tagga", "iduser" + idUser);
 
 
 
@@ -99,7 +107,7 @@ public class profileActivity extends AppCompatActivity {
 
                             if (check.isChecked()) {
                                 Toast.makeText(profileActivity.this,"Account Aggiornato", Toast.LENGTH_LONG).show();
-                                chiave = mDatabase.push().getKey();
+//                                chiave = mDatabase.push().getKey();
                                 utente.setNome(nome.getText().toString().trim());
                                 utente.setCognome(cognome.getText().toString().trim());
                                 utente.setVia(via.getText().toString().trim());
@@ -110,7 +118,7 @@ public class profileActivity extends AppCompatActivity {
                                 utente.setCampanello(campanello.getText().toString().trim());
                                 utente.setCodice(codice.getText().toString().trim());
                                 utente.setTelefono(telefono.getText().toString().trim());
-                                utente.setEmail(email.getText().toString().trim());
+//                                utente.setEmail(email.getText().toString().trim());
 
                                 mDatabase.child(chiave).setValue(utente);
 
@@ -157,8 +165,11 @@ public class profileActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
 
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
-                        Log.v("profile", "" + chidSnap.getKey());
-                        Log.v("profile", "" + chidSnap.child("email").getValue());
+
+                        Log.v("tagga", ""+chidSnap.child("email"));
+
+                        if (chidSnap.child("email").getValue().equals(idUser)){
+
                         nome.setText((CharSequence) chidSnap.child("nome").getValue());
                         cognome.setText((CharSequence) chidSnap.child("cognome").getValue());
                         via.setText((CharSequence) chidSnap.child("via").getValue());
@@ -172,6 +183,7 @@ public class profileActivity extends AppCompatActivity {
                         email.setText((CharSequence) chidSnap.child("email").getValue());
                         account.setText((CharSequence) chidSnap.child("email").getValue());
 
+                        }
 
                     }
 
