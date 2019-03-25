@@ -8,12 +8,13 @@ public class ItemSushi {
     private String descrizione;
     private String prezzo;
     private int img;
+    private String urlImg;
     private String numero;
     private String idUser;
 
 
 
-    public ItemSushi(int id, String titolo, String descrizione, String prezzo, int img, String numero, String idUser) {
+    public ItemSushi(int id, String titolo, String descrizione, String prezzo, int img, String numero, String idUser, String urlImg) {
         this.id = id;
         this.titolo = titolo;
         this.descrizione = descrizione;
@@ -21,9 +22,18 @@ public class ItemSushi {
         this.numero = numero;
         this.img = img;
         this.idUser = idUser;
+        this.urlImg = urlImg;
     }
     public ItemSushi(){
 
+    }
+
+    public String getUrlImg() {
+        return urlImg;
+    }
+
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
     }
 
     public int getId() {

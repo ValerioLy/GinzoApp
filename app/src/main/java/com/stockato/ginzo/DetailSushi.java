@@ -16,8 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +34,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class DetailSushi extends AppCompatActivity {
@@ -49,6 +54,8 @@ public class DetailSushi extends AppCompatActivity {
     boolean premuto = false;
     FirebaseStorage storage;
     StorageReference storageRef;
+    String urlImg;
+    Uri downloadUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +104,6 @@ public class DetailSushi extends AppCompatActivity {
 
         final FirebaseUser utente = FirebaseAuth.getInstance().getCurrentUser();
         idUser = utente.getUid();
-        reference = FirebaseDatabase.getInstance().getReference().child("Ordine");
 
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -157,10 +163,6 @@ public class DetailSushi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 key = reference.push().getKey();
-                itemSushi.setTitolo(titolotxt.getText().toString());
-                itemSushi.setPrezzo(prezzotxt.getText().toString());
-                itemSushi.setNumero(String.valueOf(count));
-                itemSushi.setIdUser(user.getUid());
                 //storage
                 storageRef = storage.getReference().child(key);
                 imgSushi.setDrawingCacheEnabled(true);
@@ -181,7 +183,31 @@ public class DetailSushi extends AppCompatActivity {
                         Toast.makeText(DetailSushi.this, "NADA", Toast.LENGTH_LONG).show();
                     }
                 });
+                // Get Download URL
+                Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
+                        return storageRef.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            downloadUri = task.getResult();
 
+                        } else {
+
+                        }
+                    }
+                });
+                itemSushi.setTitolo(titolotxt.getText().toString());
+                itemSushi.setPrezzo(prezzotxt.getText().toString());
+                itemSushi.setNumero(String.valueOf(count));
+                itemSushi.setIdUser(user.getUid());
+                itemSushi.setUrlImg(String.valueOf(downloadUri));
                 reference.child(key).setValue(itemSushi);
                 count3 = count2 + 1;
                 premuto = true;
@@ -197,4 +223,6 @@ public class DetailSushi extends AppCompatActivity {
             }
         });
     }
+
+
 }
