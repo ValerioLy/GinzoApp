@@ -1,6 +1,8 @@
 package com.stockato.ginzo;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +29,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -43,6 +47,8 @@ public class DetailSushi extends AppCompatActivity {
     String idUser;
     boolean check = false;
     boolean premuto = false;
+    FirebaseStorage storage;
+    StorageReference storageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +74,10 @@ public class DetailSushi extends AppCompatActivity {
         itemSushi = new ItemSushi();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference().child("Ordine");
+
+        storage = FirebaseStorage.getInstance();
+
+
 
         if (getIntent().getExtras() != null) {
             Bundle bundle = getIntent().getExtras();
@@ -108,10 +118,9 @@ public class DetailSushi extends AppCompatActivity {
 
                     }
                     check = true;
-                    if (premuto == true ){
+                    if (premuto == true) {
                         textShop.setText(String.valueOf(count3));
                     }
-
 
 
                 }
@@ -123,8 +132,6 @@ public class DetailSushi extends AppCompatActivity {
                 Log.w("profile", "Failed to read value.", error.toException());
             }
         });
-
-
 
 
         meno.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +161,27 @@ public class DetailSushi extends AppCompatActivity {
                 itemSushi.setPrezzo(prezzotxt.getText().toString());
                 itemSushi.setNumero(String.valueOf(count));
                 itemSushi.setIdUser(user.getUid());
+                //storage
+                storageRef = storage.getReference().child(key);
+                imgSushi.setDrawingCacheEnabled(true);
+                imgSushi.buildDrawingCache();
+                Bitmap bitmap = ((BitmapDrawable) imgSushi.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
+                UploadTask uploadTask = storageRef.putBytes(data);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        Toast.makeText(DetailSushi.this, "Upload Image Successfull", Toast.LENGTH_LONG).show();
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(DetailSushi.this, "NADA", Toast.LENGTH_LONG).show();
+                    }
+                });
+
                 reference.child(key).setValue(itemSushi);
                 count3 = count2 + 1;
                 premuto = true;

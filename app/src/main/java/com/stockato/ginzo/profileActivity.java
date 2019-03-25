@@ -74,7 +74,7 @@ public class profileActivity extends AppCompatActivity {
         utente = new User();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
 
-        Log.v("tagga", "iduser" + idUser);
+
 
 
 
@@ -166,7 +166,6 @@ public class profileActivity extends AppCompatActivity {
 
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
 
-                        Log.v("tagga", ""+chidSnap.child("email"));
 
                         if (chidSnap.child("email").getValue().equals(idUser)){
 
