@@ -32,8 +32,15 @@ public class OreDelivery extends AppCompatActivity {
         data = findViewById(R.id.data);
         lista = findViewById(R.id.lista);
 
-        String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-        data.setText("OGGI " + "\n" + mydate);
+//        String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        data.setText("OGGI " + "\n" + day+"/"+month+"/"+year);
 
         reference = FirebaseDatabase.getInstance().getReference().child("DataP");
         dataP = new DataP();
