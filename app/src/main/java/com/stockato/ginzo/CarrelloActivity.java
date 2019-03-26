@@ -98,7 +98,6 @@ public class CarrelloActivity extends AppCompatActivity {
                             });
 
 
-
                         }
 
                     }
@@ -144,7 +143,13 @@ public class CarrelloActivity extends AppCompatActivity {
             public void onClick(View view) {
                 new AlertDialog.Builder(CarrelloActivity.this)
                         .setTitle("Vuoi Proseguire?")
-                        .setPositiveButton("Prosegui", null)
+                        .setPositiveButton("Prosegui", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(CarrelloActivity.this, SceltaConsegna.class);
+                                startActivity(intent);
+                            }
+                        })
                         .setNegativeButton("Anulla", null)
                         .show();
             }
