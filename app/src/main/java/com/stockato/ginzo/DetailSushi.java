@@ -197,21 +197,20 @@ public class DetailSushi extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if (task.isSuccessful()) {
                             downloadUri = task.getResult();
-                            Log.i("gangshit", ""+downloadUri.toString());
                             itemSushi.setUrlImg(downloadUri.toString());
                             itemSushi.setTitolo(titolotxt.getText().toString());
                             itemSushi.setPrezzo(prezzotxt.getText().toString());
                             itemSushi.setNumero(String.valueOf(count));
                             itemSushi.setIdUser(user.getUid());
                             reference.child(key).setValue(itemSushi);
-                            count3 = count2 + 1;
-                            premuto = true;
+
                         } else {
 
                         }
                     }
                 });
-
+                count3 = count2 + 1;
+                premuto = true;
 
             }
         });
