@@ -1,6 +1,8 @@
 package com.stockato.ginzo;
 
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +64,7 @@ public class CarrelloAdapter extends BaseAdapter {
         viewHolder.titolo.setText(itemSushi.getTitolo());
         viewHolder.numero.setText(itemSushi.getNumero());
         viewHolder.prezzo.setText(itemSushi.getPrezzo());
-//        viewHolder.img.setImageResource(itemSushi.getImg());
+        viewHolder.img.setImageURI(Uri.parse(itemSushi.getUrlImg()));
 
         return convertView;
     }
