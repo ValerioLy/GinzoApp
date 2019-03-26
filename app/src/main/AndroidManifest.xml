@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SceltaConsegna"></activity>
+        <activity android:name=".TakeAway"></activity>
+        <activity android:name=".OreDelivery" />
+        <activity android:name=".SceltaConsegna" />
         <activity android:name=".CarrelloEmpty" />
         <activity android:name=".CambiaPassword" />
         <activity android:name=".ResetPassword" />
