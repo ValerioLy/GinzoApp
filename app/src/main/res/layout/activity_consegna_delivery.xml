@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".profileActivity">
+
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:gravity="center"
+            android:text="CARRELLO"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/grigioChiaro"
+            android:gravity="center"
+            android:text="DELIVERY"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="322dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:text="SPESE DI CONSEGNA"
+                android:textColor="@color/colorYellow"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/spese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="0 euro"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="331dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Nome"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/cognome"
+            android:layout_width="329dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Cognome"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/via"
+            android:layout_width="332dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Via"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="333dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/numero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Numero"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/cap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Cap"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/citta"
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Città"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/provincia"
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Provincia"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/campanello"
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Campanello"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/telefono"
+            android:layout_width="336dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Telefono"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/pwsnuova"
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Note"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/psw"
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="N. Bacchette"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/conferma"
+            android:layout_width="344dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorYellow"
+            android:text="CONFERMA" />
+
+
+    </LinearLayout>
+</ScrollView>

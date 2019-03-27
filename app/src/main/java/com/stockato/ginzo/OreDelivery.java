@@ -24,6 +24,8 @@ public class OreDelivery extends AppCompatActivity {
     DataP dataP;
     DatabaseReference reference;
     String key;
+    Intent intent;
+    private int token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +34,11 @@ public class OreDelivery extends AppCompatActivity {
         data = findViewById(R.id.data);
         lista = findViewById(R.id.lista);
 
-//        String mydate = java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
+        if (getIntent().getExtras() != null){
+
+            Bundle bundle = getIntent().getExtras();
+            token = bundle.getInt("token");
+        }
 
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
@@ -74,7 +80,12 @@ public class OreDelivery extends AppCompatActivity {
                 dataP.setOra(txtOra);
                 reference.child(key).setValue(dataP);
                 Toast.makeText(OreDelivery.this, "Ora:" + txtOra, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(OreDelivery.this, TakeAway.class);
+
+                if (token == 1){
+                    intent = new Intent(OreDelivery.this, ConsegnaDelivery.class);
+                } else {
+                    intent = new Intent(OreDelivery.this, TakeAway.class);
+                }
                 Bundle bundle = new Bundle();
                 bundle.putString("id", key);
                 bundle.putString("ora", txtOra);
