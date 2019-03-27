@@ -107,7 +107,7 @@ public class profileActivity extends AppCompatActivity {
 
                             if (check.isChecked()) {
                                 Toast.makeText(profileActivity.this,"Account Aggiornato", Toast.LENGTH_LONG).show();
-//                                chiave = mDatabase.push().getKey();
+                                chiave = mDatabase.push().getKey();
                                 utente.setNome(nome.getText().toString().trim());
                                 utente.setCognome(cognome.getText().toString().trim());
                                 utente.setVia(via.getText().toString().trim());
@@ -118,7 +118,7 @@ public class profileActivity extends AppCompatActivity {
                                 utente.setCampanello(campanello.getText().toString().trim());
                                 utente.setCodice(codice.getText().toString().trim());
                                 utente.setTelefono(telefono.getText().toString().trim());
-//                                utente.setEmail(email.getText().toString().trim());
+                                utente.setEmail(email.getText().toString().trim());
 
                                 mDatabase.child(chiave).setValue(utente);
 
