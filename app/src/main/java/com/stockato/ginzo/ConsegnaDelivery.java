@@ -1,5 +1,6 @@
 package com.stockato.ginzo;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,8 +21,10 @@ public class ConsegnaDelivery extends AppCompatActivity {
     EditText nome, cognome, via, numero, cap, citta, provincia, campanello, telefono, note, bacchette;
     Button conferma;
     private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase2;
     FirebaseUser user;
     String idUser;
+    int sommaPrezzo = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,34 @@ public class ConsegnaDelivery extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
+        mDatabase2 = FirebaseDatabase.getInstance().getReference().child("Ordine");
         idUser = user.getEmail();
+
+
+        mDatabase2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+
+                    for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
+
+//                    String prezzo = (String) chidSnap.child("prezzo").getValue();
+                    int numero = (int) chidSnap.child("numero").getValue();
+
+//                    sommaPrezzo += prezzo*numero;
+
+                    }
+
+                    spese.setText(sommaPrezzo);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -55,7 +85,7 @@ public class ConsegnaDelivery extends AppCompatActivity {
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
 
 
-                        if (chidSnap.child("email").getValue().equals(idUser)){
+                        if (chidSnap.child("email").getValue().equals(idUser)) {
 
                             nome.setText((CharSequence) chidSnap.child("nome").getValue());
                             cognome.setText((CharSequence) chidSnap.child("cognome").getValue());
@@ -80,5 +110,7 @@ public class ConsegnaDelivery extends AppCompatActivity {
                 Log.w("profile", "Failed to read value.", error.toException());
             }
         });
+
+
     }
 }
