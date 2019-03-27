@@ -25,6 +25,7 @@ public class ConsegnaDelivery extends AppCompatActivity {
     FirebaseUser user;
     String idUser;
     int sommaPrezzo = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,14 +60,20 @@ public class ConsegnaDelivery extends AppCompatActivity {
 
                     for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
 
-//                    String prezzo = (String) chidSnap.child("prezzo").getValue();
-                    int numero = (int) chidSnap.child("numero").getValue();
+                        String prezzo = (String) chidSnap.child("prezzo").getValue();
+                        String numero = (String) chidSnap.child("numero").getValue();
 
-//                    sommaPrezzo += prezzo*numero;
+                        String prezzoInt = prezzo.substring(0, 5);
+
+
+                        double price = Double.valueOf(prezzoInt);
+                        double number = Double.valueOf(numero);
+
+                        sommaPrezzo += price * number;
 
                     }
 
-                    spese.setText(sommaPrezzo);
+                    spese.setText(String.valueOf(sommaPrezzo + "euro"));
                 }
             }
 
