@@ -77,6 +77,7 @@ public class OrdinaActivity extends AppCompatActivity {
 
                 long idItem = adapterView.getAdapter().getItemId(i);
 
+
                 if (idItem != 0 || idItem != 2 || idItem != 5 || idItem != 11 || idItem != 17 || idItem !=  20 || idItem != 22 || idItem != 24 || idItem != 26 || idItem != 28 || idItem != 30 || idItem != 32 || idItem != 37) {
                     Intent intent = new Intent(OrdinaActivity.this, OrdersActivity.class);
                     Log.i("ordina", "id:"+idItem);
@@ -85,7 +86,6 @@ public class OrdinaActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
-
             }
         });
     }

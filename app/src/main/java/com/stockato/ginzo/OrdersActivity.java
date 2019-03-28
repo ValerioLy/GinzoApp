@@ -292,6 +292,63 @@ public class OrdersActivity extends AppCompatActivity {
         itemSushi38.add(new ItemSushi(2, "SALSA DI SOYA...", "Senza Glutine - Adatta ai celiaci", "6.00 euro", R.drawable.soiasenzaglutine, "","",""));
         itemSushi38.add(new ItemSushi(3, "SALSA TERIYAKI", "Salsa di soya dolce", "6.00 euro", R.drawable.teriyaki, "","",""));
 
+
+        if (idItem == 0){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+
+        if (idItem == 2){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 5){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+
+        if (idItem == 11){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 17){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 20){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 22){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 24){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 26){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 28){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 30){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 32){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+        if (idItem == 37){
+            Intent intent = new Intent(OrdersActivity.this, OrdinaActivity.class);
+            startActivity(intent);
+        }
+
+
         if (idItem == 1) {
             itemAdapter = new ItemAdapter(itemSushi1, OrdersActivity.this);
             listOrders.setAdapter(itemAdapter);
@@ -311,6 +368,8 @@ public class OrdersActivity extends AppCompatActivity {
 
                 }
             });
+
+
 
         } else if (idItem == 3) {
             itemAdapter = new ItemAdapter(itemSushi3, OrdersActivity.this);
@@ -351,6 +410,7 @@ public class OrdersActivity extends AppCompatActivity {
 
                 }
             });
+
         } else if (idItem == 6) {
             itemAdapter = new ItemAdapter(itemSushi6, OrdersActivity.this);
             listOrders.setAdapter(itemAdapter);
