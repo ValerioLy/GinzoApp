@@ -79,7 +79,6 @@ public class CarrelloActivity extends AppCompatActivity {
                             Log.i("idChild", "id:" + idUserChild + idUser);
 
 
-                            // download image
                             storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
