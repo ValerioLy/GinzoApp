@@ -1,5 +1,7 @@
 package com.stockato.ginzo;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,9 +28,18 @@ public class ConsegnaDelivery extends AppCompatActivity {
     Button conferma;
     private DatabaseReference mDatabase;
     private DatabaseReference mDatabase2;
+    private DatabaseReference mDatabase3;
     FirebaseUser user;
     String idUser;
     int sommaPrezzo = 0;
+
+    String idUtente;
+    String number;
+    String prezzo;
+    String titolo;
+    String urlImg;
+    String keyId;
+    ItemSushi itemSushi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +65,9 @@ public class ConsegnaDelivery extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
         mDatabase2 = FirebaseDatabase.getInstance().getReference().child("Ordine");
+        mDatabase3 = FirebaseDatabase.getInstance().getReference().child("OrdiniAcquistati");
+        itemSushi = new ItemSushi();
+
         idUser = user.getEmail();
 
 
@@ -120,11 +137,48 @@ public class ConsegnaDelivery extends AppCompatActivity {
         });
 
 
-
         conferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                mDatabase2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.exists()) {
+
+                            for (final DataSnapshot chidSnap : dataSnapshot.getChildren()) {
+
+                                keyId = (String) chidSnap.getKey();
+                                idUtente = (String) chidSnap.child("idUser").getValue();
+                                number = (String) chidSnap.child("numero").getValue();
+                                prezzo = (String) chidSnap.child("prezzo").getValue();
+                                titolo = (String) chidSnap.child("titolo").getValue();
+                                urlImg = (String) chidSnap.child("urlImg").getValue();
+
+
+                                itemSushi.setIdUser(idUtente);
+                                itemSushi.setNumero(number);
+                                itemSushi.setPrezzo(prezzo);
+                                itemSushi.setTitolo(titolo);
+                                itemSushi.setUrlImg(urlImg);
+                                mDatabase3.child(keyId).setValue(itemSushi);
+
+
+
+
+                            }
+                            mDatabase2.removeValue();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Intent intent = new Intent(ConsegnaDelivery.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
         });
 
